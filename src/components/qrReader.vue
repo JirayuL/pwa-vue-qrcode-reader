@@ -1,6 +1,6 @@
 <template>
   <div class="qrReader">
-    <qrcode-reader @decode="onDecode" @locate="onLocate">
+    <qrcode-reader @decode="onDecode" @locate="onLocate" :paused="paused">
       <b>scan qr code via the camera</b>
     </qrcode-reader>
     <qr-list :linkQR="linkQR"></qr-list>
@@ -17,14 +17,23 @@ export default {
   },
   data () {
     return {
-      linkQR: []
+      linkQR: [],
+      paused: false
     }
   },
   methods: {
     onDecode (content) {
+      console.log('onDecode')
       if (content) {
-        this.linkQR.push(content)
+        this.linkQR.push({
+          id: Math.random(),
+          content: content
+        })
       }
+      this.paused = true
+      setTimeout(() => {
+        this.paused = false
+      }, 10)
       console.log(content)
     },
     onLocate (points) {
