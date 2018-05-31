@@ -1,0 +1,35 @@
+<template>
+  <div class="qrReader">
+    <qrcode-reader @decode="onDecode" @locate="onLocate">
+      <b>scan qr code via the camera</b>
+    </qrcode-reader>
+    <qr-list :linkQR="linkQR"></qr-list>
+  </div>
+</template>
+
+<script>
+import QrList from './QrList'
+
+export default {
+  name: 'qrReader',
+  components: {
+    QrList
+  },
+  data () {
+    return {
+      linkQR: []
+    }
+  },
+  methods: {
+    onDecode (content) {
+      if (content) {
+        this.linkQR.push(content)
+      }
+      console.log(content)
+    },
+    onLocate (points) {
+      console.log(points)
+    }
+  }
+}
+</script>
