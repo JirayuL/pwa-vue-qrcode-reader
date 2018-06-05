@@ -1,18 +1,17 @@
 <template>
-  <div class="listLink">
-    <ul id="listLink">
+  <div class="home">
+    <p>Hello</p>
+    <!-- <ul>
       <li v-for="(item, index) in linkQR" :key="index">
         {{ item }}
       </li>
-    </ul>
+    </ul> -->
+    <router-link to="/qr-scanner" exact><button>Scan</button></router-link>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['linkQR'],
-  name: 'listLink'
+  name: 'home'
 }
 </script>
-
-<style></style>
