@@ -30,13 +30,13 @@ export default {
           id: Math.random(),
           content: content
         })
-        this.$router.push({ name: 'home' })
+        // this.$router.push({ name: 'home' })
       }
-      // this.paused = true
-      // setTimeout(() => {
-      //   this.paused = false
-      // }, 10)
-      // console.log(content)
+      this.paused = true
+      setTimeout(() => {
+        this.paused = false
+      }, 100)
+      console.log(content)
     },
     onLocate (points) {
       console.log(points)
